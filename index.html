@@ -3,43 +3,195 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GitHub Pages Test</title>
-  <style>
-    body {
-      font-family: system-ui, -apple-system, sans-serif;
-      background: #f4f1ea;
-      color: #1a1a1a;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-      text-align: center;
-    }
-    .card {
-      padding: 2rem 3rem;
-      border: 1px solid #ddd8cc;
-      border-radius: 8px;
-      background: #fff;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    }
-    h1 {
-      margin-bottom: 0.5rem;
-    }
-    p {
-      color: #555;
-    }
-    code {
-      background: #f0efe8;
-      padding: 2px 6px;
-      border-radius: 4px;
-    }
-  </style>
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
-  <div class="card">
-    <h1>✅ It works!</h1>
-    <p>GitHub Pages is live. Replace <code>index.html</code> with your portfolio.</p>
-  </div>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="#" class="logo">jd<span>.</span>dev</a>
+      <ul class="site-nav">
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Portfolio · 2026</span>
+      <h1>Building things that are <em>fast, clean, and useful</em></h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. A short line about what I build and the kind of work I'm looking for.</p>
+    </div>
+  </section>
+
+  <section class="carousel-section" id="projects">
+    <div class="wrap">
+      <div class="section-heading">
+        <div>
+          <h2>Selected Projects</h2>
+          <p>A few things I've been working on lately.</p>
+        </div>
+      </div>
+
+      <div class="carousel" data-carousel>
+        <div class="carousel-viewport">
+          <div class="carousel-track" data-carousel-track>
+
+            <article class="project-card">
+              <div class="card-inner">
+                <div class="card-media" style="--gradient: linear-gradient(135deg, #23324d, #12151c);">
+                  <span class="tag">Web App</span>
+                  <span class="glyph">🗂️</span>
+                </div>
+                <div class="card-body">
+                  <span class="index">01 / 06</span>
+                  <h3>Project Alpha</h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                  <div class="stack">
+                    <span>React</span>
+                    <span>Node.js</span>
+                    <span>PostgreSQL</span>
+                  </div>
+                  <div class="card-links">
+                    <a href="#" class="btn btn-primary">Live Demo</a>
+                    <a href="#" class="btn btn-ghost">Source</a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <div class="card-inner">
+                <div class="card-media" style="--gradient: linear-gradient(135deg, #2b2340, #12151c);">
+                  <span class="tag">Mobile</span>
+                  <span class="glyph">📱</span>
+                </div>
+                <div class="card-body">
+                  <span class="index">02 / 06</span>
+                  <h3>Project Beta</h3>
+                  <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                  <div class="stack">
+                    <span>React Native</span>
+                    <span>Firebase</span>
+                  </div>
+                  <div class="card-links">
+                    <a href="#" class="btn btn-primary">Live Demo</a>
+                    <a href="#" class="btn btn-ghost">Source</a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <div class="card-inner">
+                <div class="card-media" style="--gradient: linear-gradient(135deg, #1d3a34, #12151c);">
+                  <span class="tag">Data / ML</span>
+                  <span class="glyph">📊</span>
+                </div>
+                <div class="card-body">
+                  <span class="index">03 / 06</span>
+                  <h3>Project Gamma</h3>
+                  <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                  <div class="stack">
+                    <span>Python</span>
+                    <span>Pandas</span>
+                    <span>scikit-learn</span>
+                  </div>
+                  <div class="card-links">
+                    <a href="#" class="btn btn-primary">Live Demo</a>
+                    <a href="#" class="btn btn-ghost">Source</a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <div class="card-inner">
+                <div class="card-media" style="--gradient: linear-gradient(135deg, #402323, #12151c);">
+                  <span class="tag">CLI Tool</span>
+                  <span class="glyph">⚙️</span>
+                </div>
+                <div class="card-body">
+                  <span class="index">04 / 06</span>
+                  <h3>Project Delta</h3>
+                  <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                  <div class="stack">
+                    <span>Go</span>
+                    <span>Cobra</span>
+                  </div>
+                  <div class="card-links">
+                    <a href="#" class="btn btn-primary">Live Demo</a>
+                    <a href="#" class="btn btn-ghost">Source</a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <div class="card-inner">
+                <div class="card-media" style="--gradient: linear-gradient(135deg, #3a331d, #12151c);">
+                  <span class="tag">Browser Extension</span>
+                  <span class="glyph">🧩</span>
+                </div>
+                <div class="card-body">
+                  <span class="index">05 / 06</span>
+                  <h3>Project Epsilon</h3>
+                  <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
+                  <div class="stack">
+                    <span>TypeScript</span>
+                    <span>Manifest V3</span>
+                  </div>
+                  <div class="card-links">
+                    <a href="#" class="btn btn-primary">Live Demo</a>
+                    <a href="#" class="btn btn-ghost">Source</a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <div class="card-inner">
+                <div class="card-media" style="--gradient: linear-gradient(135deg, #23283a, #12151c);">
+                  <span class="tag">API / Backend</span>
+                  <span class="glyph">🔌</span>
+                </div>
+                <div class="card-body">
+                  <span class="index">06 / 06</span>
+                  <h3>Project Zeta</h3>
+                  <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni.</p>
+                  <div class="stack">
+                    <span>FastAPI</span>
+                    <span>Docker</span>
+                    <span>Redis</span>
+                  </div>
+                  <div class="card-links">
+                    <a href="#" class="btn btn-primary">Live Demo</a>
+                    <a href="#" class="btn btn-ghost">Source</a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <div class="carousel-controls">
+          <button type="button" class="carousel-arrow" data-carousel-prev aria-label="Previous project">&#8592;</button>
+          <div class="carousel-dots" data-carousel-dots></div>
+          <button type="button" class="carousel-arrow" data-carousel-next aria-label="Next project">&#8594;</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>&copy; 2026 · Built and deployed with GitHub Pages.</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/carousel.js"></script>
 </body>
 </html>
