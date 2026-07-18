@@ -3,23 +3,15 @@
   if (!carousel) return;
 
   const track = carousel.querySelector("[data-carousel-track]");
-  const slides = Array.from(track.children);
   const prevBtn = carousel.querySelector("[data-carousel-prev]");
   const nextBtn = carousel.querySelector("[data-carousel-next]");
   const dotsWrap = carousel.querySelector("[data-carousel-dots]");
   const AUTOPLAY_MS = 6000;
 
+  let slides = [];
+  let dots = [];
   let index = 0;
   let autoplayTimer = null;
-
-  slides.forEach((_, i) => {
-    const dot = document.createElement("button");
-    dot.type = "button";
-    dot.setAttribute("aria-label", `Go to project ${i + 1}`);
-    dot.addEventListener("click", () => goTo(i));
-    dotsWrap.appendChild(dot);
-  });
-  const dots = Array.from(dotsWrap.children);
 
   function render() {
     track.style.transform = `translateX(-${index * 100}%)`;
@@ -27,6 +19,7 @@
   }
 
   function goTo(i) {
+    if (slides.length === 0) return;
     index = (i + slides.length) % slides.length;
     render();
     restartAutoplay();
@@ -42,7 +35,29 @@
 
   function restartAutoplay() {
     if (autoplayTimer) clearInterval(autoplayTimer);
+    if (slides.length === 0) return;
     autoplayTimer = setInterval(next, AUTOPLAY_MS);
+  }
+
+  function initCarousel() {
+    slides = Array.from(track.children);
+    index = 0;
+
+    dotsWrap.innerHTML = "";
+    slides.forEach((_, i) => {
+      const dot = document.createElement("button");
+      dot.type = "button";
+      dot.setAttribute("aria-label", `Go to project ${i + 1}`);
+      dot.addEventListener("click", () => goTo(i));
+      dotsWrap.appendChild(dot);
+    });
+    dots = Array.from(dotsWrap.children);
+
+    if (autoplayTimer) clearInterval(autoplayTimer);
+    if (slides.length === 0) return;
+
+    render();
+    restartAutoplay();
   }
 
   nextBtn.addEventListener("click", next);
@@ -72,6 +87,5 @@
     touchStartX = null;
   });
 
-  render();
-  restartAutoplay();
+  window.PortfolioCarousel = { init: initCarousel };
 })();

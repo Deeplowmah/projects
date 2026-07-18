@@ -1,0 +1,13 @@
+{
+  "photo": "",
+  "photoAlt": "",
+  "heading": "About Me",
+  "bio": [
+    "Add a short bio here in assets/data/about.json.",
+    "You can write multiple paragraphs — each string in the \"bio\" array becomes its own paragraph."
+  ],
+  "email": "diplomajoshua02@gmail.com",
+  "links": [
+    { "label": "GitHub", "url": "https://github.com/deeplowmah" }
+  ]
+}
