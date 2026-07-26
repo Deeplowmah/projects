@@ -1,68 +1,82 @@
 [
   {
-    "title": "Project Alpha",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    "tag": "Web App",
-    "glyph": "🗂️",
-    "image": "",
+    "id": "project_001",
+    "title": "TCUBED",
+    "description": "A ping pong training system that tracks play and gives real-time feedback to help players improve.",
+    "tag": "Hardware / Robotics",
+    "glyph": "🏓",
     "imageAlt": "",
-    "stack": ["React", "Node.js", "PostgreSQL"],
+    "stack": ["CAD", "PCB Design", "Embedded C++"],
     "demoUrl": "",
-    "sourceUrl": ""
+    "sourceUrl": "",
+    "detail": {
+      "summary": "TCUBED is a ping pong trainer — placeholder overview paragraph covering the project's goals, mechanical build, electronics, and control software.",
+      "sections": [
+        { "key": "overview", "label": "Overview", "glyph": "🧭" },
+        { "key": "mechanical", "label": "Mechanical", "glyph": "⚙️" },
+        { "key": "electrical", "label": "Electrical", "glyph": "🔌" },
+        { "key": "software", "label": "Software", "glyph": "💻" }
+      ]
+    }
   },
   {
-    "title": "Project Beta",
-    "description": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    "tag": "Mobile",
-    "glyph": "📱",
-    "image": "",
+    "id": "project_002",
+    "title": "DALE",
+    "description": "A fully custom mechanical keyboard, built from a custom PCB and firmware up through a machined/printed case.",
+    "tag": "Hardware / Peripherals",
+    "glyph": "⌨️",
     "imageAlt": "",
-    "stack": ["React Native", "Firebase"],
+    "stack": ["SolidWorks", "KiCad", "QMK Firmware"],
     "demoUrl": "",
-    "sourceUrl": ""
+    "sourceUrl": "",
+    "detail": {
+      "summary": "DALE is a custom mechanical keyboard — placeholder overview paragraph covering the case design, PCB, and firmware.",
+      "sections": [
+        { "key": "overview", "label": "Overview", "glyph": "🧭" },
+        { "key": "mechanical", "label": "Mechanical", "glyph": "⚙️" },
+        { "key": "electrical", "label": "Electrical", "glyph": "🔌" },
+        { "key": "software", "label": "Software", "glyph": "💻" }
+      ]
+    }
   },
   {
-    "title": "Project Gamma",
-    "description": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    "tag": "Data / ML",
-    "glyph": "📊",
-    "image": "",
+    "id": "project_003",
+    "title": "FSAE CAN",
+    "description": "CAN bus network design for the university Formula SAE car, enabling reliable ECU and sensor communication across the vehicle.",
+    "tag": "Embedded / Automotive",
+    "glyph": "🏎️",
     "imageAlt": "",
-    "stack": ["Python", "Pandas", "scikit-learn"],
+    "stack": ["CAN Bus", "STM32", "Embedded C", "PCB Design"],
     "demoUrl": "",
-    "sourceUrl": ""
+    "sourceUrl": "",
+    "detail": {
+      "summary": "FSAE CAN is the CAN bus network built for the Formula SAE car — placeholder overview paragraph covering the network topology, nodes, and tooling.",
+      "sections": [
+        { "key": "overview", "label": "Overview", "glyph": "🧭" },
+        { "key": "mechanical", "label": "Mechanical", "glyph": "⚙️" },
+        { "key": "electrical", "label": "Electrical", "glyph": "🔌" },
+        { "key": "software", "label": "Software", "glyph": "💻" }
+      ]
+    }
   },
   {
-    "title": "Project Delta",
-    "description": "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    "tag": "CLI Tool",
-    "glyph": "⚙️",
-    "image": "",
+    "id": "project_004",
+    "title": "SCOUT",
+    "description": "A custom control and motor driver board for a mobile robot platform, handling motor drive, sensing, and low-level control.",
+    "tag": "Hardware / Robotics",
+    "glyph": "🛞",
     "imageAlt": "",
-    "stack": ["Go", "Cobra"],
+    "stack": ["PCB Design", "Motor Control", "Embedded C++", "CAD"],
     "demoUrl": "",
-    "sourceUrl": ""
-  },
-  {
-    "title": "Project Epsilon",
-    "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.",
-    "tag": "Browser Extension",
-    "glyph": "🧩",
-    "image": "",
-    "imageAlt": "",
-    "stack": ["TypeScript", "Manifest V3"],
-    "demoUrl": "",
-    "sourceUrl": ""
-  },
-  {
-    "title": "Project Zeta",
-    "description": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni.",
-    "tag": "API / Backend",
-    "glyph": "🔌",
-    "image": "",
-    "imageAlt": "",
-    "stack": ["FastAPI", "Docker", "Redis"],
-    "demoUrl": "",
-    "sourceUrl": ""
+    "sourceUrl": "",
+    "detail": {
+      "summary": "SCOUT is a control and motor driver board for a mobile robot — placeholder overview paragraph covering the board design, control loop, and firmware.",
+      "sections": [
+        { "key": "overview", "label": "Overview", "glyph": "🧭" },
+        { "key": "mechanical", "label": "Mechanical", "glyph": "⚙️" },
+        { "key": "electrical", "label": "Electrical", "glyph": "🔌" },
+        { "key": "software", "label": "Software", "glyph": "💻" }
+      ]
+    }
   }
 ]

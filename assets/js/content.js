@@ -15,62 +15,119 @@
     return res.json();
   }
 
-  function projectCardHTML(project, i, total) {
+  function isLocalPreview() {
+    const h = location.hostname;
+    return h === "localhost" || h === "127.0.0.1";
+  }
+
+  const IMAGE_EXTENSIONS = ["jpg", "jpeg", "png", "webp", "gif"];
+
+  function projectTileHTML(project) {
     const {
+      id = "",
       title = "",
       description = "",
       tag = "",
       glyph = "",
-      image = "",
       imageAlt = "",
       stack = [],
       demoUrl = "",
       sourceUrl = "",
+      detail = null,
     } = project;
 
-    const media = image
-      ? `<img src="assets/images/projects/${escapeHtml(image)}" alt="${escapeHtml(imageAlt || title)}" loading="lazy" />`
-      : glyph
-        ? `<span class="glyph">${escapeHtml(glyph)}</span>`
-        : "";
+    const imageBase = id ? `assets/images/projects/${encodeURIComponent(id)}_img_001` : "";
+    const glyphHTML = glyph ? `<span class="glyph">${escapeHtml(glyph)}</span>` : "";
+
+    const media = imageBase
+      ? `<img data-project-media data-image-base="${escapeHtml(imageBase)}" data-ext-index="0" alt="${escapeHtml(imageAlt || title)}" loading="lazy" style="display:none" />`
+        + `<span class="media-fallback" data-media-fallback hidden>${glyphHTML}</span>`
+      : glyphHTML;
 
     const stackHTML = (stack || []).map((s) => `<span>${escapeHtml(s)}</span>`).join("");
+
+    // Projects with a `detail` block link through to their own page instead of
+    // showing Demo/Source buttons here — those live on the detail page.
+    const hasDetail = Boolean(detail);
+    const tagName = hasDetail ? "a" : "article";
+    const rootAttrs = hasDetail
+      ? `href="project.html?id=${encodeURIComponent(id)}"`
+      : `tabindex="0"`;
 
     const links = [];
     if (demoUrl) links.push(`<a href="${escapeHtml(demoUrl)}" class="btn btn-primary" target="_blank" rel="noopener">Live Demo</a>`);
     if (sourceUrl) links.push(`<a href="${escapeHtml(sourceUrl)}" class="btn btn-ghost" target="_blank" rel="noopener">Source</a>`);
 
-    const indexLabel = `${String(i + 1).padStart(2, "0")} / ${String(total).padStart(2, "0")}`;
+    const footer = hasDetail
+      ? `<span class="tile-view-link">View project &rarr;</span>`
+      : (links.length ? `<div class="tile-links">${links.join("")}</div>` : "");
 
     return `
-      <article class="project-card">
-        <div class="card-inner">
-          <div class="card-media">
-            <span class="tag">${escapeHtml(tag)}</span>
-            ${media}
-          </div>
-          <div class="card-body">
-            <span class="index">${indexLabel}</span>
-            <h3>${escapeHtml(title)}</h3>
-            <p>${escapeHtml(description)}</p>
-            <div class="stack">${stackHTML}</div>
-            ${links.length ? `<div class="card-links">${links.join("")}</div>` : ""}
-          </div>
+      <${tagName} class="project-tile" ${rootAttrs}>
+        <div class="tile-media">${media}</div>
+        <div class="tile-panel">
+          ${tag ? `<span class="tile-tag">${escapeHtml(tag)}</span>` : ""}
+          <h3>${escapeHtml(title)}</h3>
+          <p>${escapeHtml(description)}</p>
+          <div class="stack">${stackHTML}</div>
+          ${footer}
         </div>
-      </article>
+      </${tagName}>
     `;
   }
 
+  function wireProjectImages(container) {
+    const imgs = container.querySelectorAll("[data-project-media]");
+    imgs.forEach((img) => {
+      const base = img.getAttribute("data-image-base");
+      const fallback = img.nextElementSibling;
+
+      function tryExt(extIndex) {
+        if (extIndex >= IMAGE_EXTENSIONS.length) {
+          showFallback();
+          return;
+        }
+        img.dataset.extIndex = String(extIndex);
+        img.src = `${base}.${IMAGE_EXTENSIONS[extIndex]}`;
+      }
+
+      function showFallback() {
+        img.style.display = "none";
+        img.removeAttribute("src");
+        if (!fallback) return;
+        if (isLocalPreview()) {
+          const filename = `${base.split("/").pop()}.jpg`;
+          fallback.innerHTML = `
+            <span class="dev-placeholder">
+              <span class="dev-placeholder-label">No image found</span>
+              <code class="dev-placeholder-filename">Drop <strong>${escapeHtml(filename)}</strong> here</code>
+            </span>
+          `;
+        }
+        fallback.hidden = false;
+      }
+
+      img.addEventListener("load", () => {
+        img.style.display = "";
+      });
+      img.addEventListener("error", () => {
+        const current = Number(img.dataset.extIndex || "0");
+        tryExt(current + 1);
+      });
+
+      tryExt(0);
+    });
+  }
+
   async function renderProjects() {
-    const track = document.querySelector("[data-carousel-track]");
-    if (!track) return;
+    const grid = document.querySelector("[data-project-grid]");
+    if (!grid) return;
     try {
       const projects = await fetchJSON("assets/data/projects.json");
-      track.innerHTML = projects.map((p, i) => projectCardHTML(p, i, projects.length)).join("");
+      grid.innerHTML = projects.map((p) => projectTileHTML(p)).join("");
+      wireProjectImages(grid);
     } catch (err) {
       console.error(err);
-    } finally {
-      window.PortfolioCarousel && window.PortfolioCarousel.init();
     }
   }
 
